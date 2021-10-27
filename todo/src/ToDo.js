@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Count from "./Count";
 
 let arrayToDo = [];
 let count = 0;
@@ -8,7 +9,6 @@ function ToDo() {
 
   function addToDo(e) {
     e.preventDefault();
-
     let value = e.target[0].value;
     arrayToDo.push(value);
     arrayToDo = [...arrayToDo];
@@ -19,7 +19,7 @@ function ToDo() {
 
   function remove(index) {
     arrayToDo = [...arrayToDo];
-    console.log("click delete");
+    console.log(index);
     // let item = arrayToDo.indexOf(index);
     arrayToDo.splice(index, 1);
     setAddToDo(arrayToDo);
@@ -28,7 +28,6 @@ function ToDo() {
   function addCounter() {
     // console.log("clicked + ");
     addCount = count++;
-    // setaddCount(count);
     console.log(addCount);
     setaddCount(addCount);
   }
@@ -36,7 +35,6 @@ function ToDo() {
   function removeCounter() {
     // console.log("clicked + ");
     addCount = count--;
-    // setaddCount(count);
     console.log(addCount);
     setaddCount(addCount);
   }
@@ -58,7 +56,7 @@ function ToDo() {
 
           return (
             <li key={index}>
-              {item} <button onClick={remove}>Delete</button>
+              {item} <button onClick={() => remove(index)}>Delete</button>
               <br />
               <button onClick={addCounter}> + </button>
               <h6>{count}</h6>
