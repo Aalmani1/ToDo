@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 let arrayToDo = [];
-
+let count = 0;
 function ToDo() {
-  //   const [Todo, setToDo] = useState([]);
-  const [AddTodo, setAddToDo] = useState([]);
+  let [addCount, setaddCount] = useState();
+  let [AddTodo, setAddToDo] = useState([]);
 
   function addToDo(e) {
     e.preventDefault();
@@ -24,6 +24,23 @@ function ToDo() {
     arrayToDo.splice(index, 1);
     setAddToDo(arrayToDo);
   }
+
+  function addCounter() {
+    // console.log("clicked + ");
+    addCount = count++;
+    // setaddCount(count);
+    console.log(addCount);
+    setaddCount(addCount);
+  }
+
+  function removeCounter() {
+    // console.log("clicked + ");
+    addCount = count--;
+    // setaddCount(count);
+    console.log(addCount);
+    setaddCount(addCount);
+  }
+
   return (
     <div>
       <h2>To Do List</h2>
@@ -43,8 +60,9 @@ function ToDo() {
             <li key={index}>
               {item} <button onClick={remove}>Delete</button>
               <br />
-              <button onClick="addCount"> - </button> <h6></h6>
-              <button onClick="removeCount"> + </button>
+              <button onClick={addCounter}> + </button>
+              <h6>{count}</h6>
+              <button onClick={removeCounter}> - </button>
             </li>
           );
         })}
