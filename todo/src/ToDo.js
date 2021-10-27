@@ -20,11 +20,9 @@ function ToDo() {
   function remove(index) {
     arrayToDo = [...arrayToDo];
     console.log("click delete");
-    let item = arrayToDo.indexOf(index);
-    if (item > -1) {
-      arrayToDo.splice(item, 1);
-      setAddToDo(arrayToDo);
-    }
+    // let item = arrayToDo.indexOf(index);
+    arrayToDo.splice(index, 1);
+    setAddToDo(arrayToDo);
   }
   return (
     <div>
@@ -44,6 +42,9 @@ function ToDo() {
           return (
             <li key={index}>
               {item} <button onClick={remove}>Delete</button>
+              <br />
+              <button onClick="addCount"> - </button> <h6></h6>
+              <button onClick="removeCount"> + </button>
             </li>
           );
         })}
@@ -52,9 +53,3 @@ function ToDo() {
   );
 } //function ToDo
 export default ToDo;
-
-//==================================================================
-//==================================================================
-//==================================================================
-//==================================================================
-//==================================================================
